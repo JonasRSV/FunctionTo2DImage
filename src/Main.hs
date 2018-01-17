@@ -5,15 +5,7 @@ import System.Environment
 import Data.ByteString
 import Data.Word8
 import System.Random
-import Control.Arrow
-import Control.Monad
-import Control.Applicative
 
-toWord8 :: Int -> Word8
-toWord8 = fromIntegral
-
-test :: [Word8]
-test = [toWord8 200, toWord8 200, toWord8 100, toWord8 100]
 
 data RGBA = RGBA Word8 Word8 Word8 Word8
 data Mathy = FALSE | TRUE | BORDER
@@ -58,7 +50,8 @@ setImage dim@(width, heigth) c t b = Prelude.take (width * heigth) lazyImage
                                     case uncurry c $ translate2D dim index of
                                       FALSE -> color
                                       TRUE -> t
-                                      BORDER -> b) lazyBG
+                                      BORDER -> b ) lazyBG
+
 
 
 testImage :: Int -> Int -> Mathy
